@@ -17,7 +17,7 @@ export const enableDebugTracing = false;
 
 // Adds user timing marks for e.g. state updates, suspense, and work loop stuff,
 // for an experimental scheduling profiler tool.
-export const enableSchedulingProfiler = false;
+export const enableSchedulingProfiler = __PROFILE__ && __EXPERIMENTAL__;
 
 // Helps identify side effects in render-phase lifecycle hooks and setState
 // reducers by double invoking them in Strict Mode.
@@ -36,6 +36,13 @@ export const enableProfilerTimer = __PROFILE__;
 // Record durations for commit and passive effects phases.
 export const enableProfilerCommitHooks = false;
 
+// Phase param passed to onRender callback differentiates between an "update" and a "cascading-update".
+export const enableProfilerNestedUpdatePhase = false;
+
+// Profiler API accepts a function to be called when a nested update is scheduled.
+// This callback accepts the component type (class instance or function) the update is scheduled for.
+export const enableProfilerNestedUpdateScheduledHook = false;
+
 // Trace which interactions trigger each commit.
 export const enableSchedulerTracing = __PROFILE__;
 
@@ -44,7 +51,6 @@ export const enableSuspenseServerRenderer = __EXPERIMENTAL__;
 export const enableSelectiveHydration = __EXPERIMENTAL__;
 
 // Flight experiments
-export const enableBlocksAPI = __EXPERIMENTAL__;
 export const enableLazyElements = __EXPERIMENTAL__;
 
 // Only used in www builds.
@@ -52,9 +58,6 @@ export const enableSchedulerDebugging = false;
 
 // Disable javascript: URL strings in href for XSS protection.
 export const disableJavaScriptURLs = false;
-
-// Experimental React Flare event system and event components support.
-export const enableDeprecatedFlareAPI = false;
 
 // Experimental Host Component support.
 export const enableFundamentalAPI = false;
@@ -128,5 +131,10 @@ export const deferRenderPhaseUpdateToNextBatch = true;
 // Replacement for runWithPriority in React internals.
 export const decoupleUpdatePriorityFromScheduler = false;
 
-// Enables delegation for submit and reset events.
-export const enableFormEventDelegation = false;
+export const enableDiscreteEventFlushingChange = false;
+
+export const enableDoubleInvokingEffects = false;
+
+export const enableUseRefAccessWarning = false;
+
+export const enableRecursiveCommitTraversal = false;
